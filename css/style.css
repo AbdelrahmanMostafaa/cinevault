@@ -1,0 +1,68 @@
+/* css/style.css */
+
+/* Basic CSS variables for theming - override in theme css file */
+:root {
+  --primary: #0d6efd;
+  --accent: #ff7b00;
+  --bg: #ffffff;
+  --text: #222;
+  --muted: #6c757d;
+  --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+/* NAVBAR overrides */
+.navbar-brand {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Hero styles */
+.hero {
+  background: linear-gradient(90deg, rgba(13,110,253,0.08), rgba(255,123,0,0.04));
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Card hover */
+.card:hover {
+  transform: translateY(-4px);
+  transition: transform 0.18s ease-in;
+}
+
+/* Movie card styles */
+.movie-card .card-body {
+  min-height: 120px;
+}
+
+/* Core responsive grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+/* Small clarity adjustments */
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 1.5rem 0;
+}

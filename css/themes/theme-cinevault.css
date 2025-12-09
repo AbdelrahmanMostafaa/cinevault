@@ -1,0 +1,7 @@
+:root {
+  --primary: #0d6efd; /* bootstrap blue */
+  --accent: #ff7b00;
+  --bg: #fff;
+  --text: #222;
+  --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}

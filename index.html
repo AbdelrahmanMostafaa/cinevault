@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CineVault — Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/themes/theme-cinevault.css">
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">CineVault</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
+          <li class="nav-item"><a class="nav-link" href="favorites.html">Favorites</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero py-5 text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-7">
+          <h1 class="display-5 fw-bold text-primary">Welcome to CineVault</h1>
+          <p class="lead text-primary">Discover, save, and revisit your favorite movies — styled simply and taught step-by-step.</p>
+          <a href="movies.html" class="btn btn-primary btn-lg">Browse Movies</a>
+        </div>
+        <div class="col-md-5 d-none d-md-block">
+          <img src="assets/images/hero-2.png" alt="Hero image" class="img-fluid rounded shadow-sm">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Carousel -->
+  <section class="container py-5">
+    <h2 class="mb-3">Featured Movies</h2>
+    <div id="featuredCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="card">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-4">
+                <img src="assets/images/movie-1.png" class="img-fluid rounded-start" alt="Movie 1">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">The Wild Frontier</h5>
+                  <p class="card-text">A dramatic survival story with breathtaking visuals and memorable performances.</p>
+                  <a href="details.html?id=1" class="btn btn-outline-primary">View details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="card">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-4">
+                <img src="assets/images/movie-2.png" class="img-fluid rounded-start" alt="Movie 2">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Space Diaries</h5>
+                  <p class="card-text">An intimate story set against the largest backdrop of all — the stars.</p>
+                  <a href="details.html?id=2" class="btn btn-outline-primary">View details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <h3>Join our Newsletter</h3>
+      <form id="newsletterForm" class="row g-2 align-items-center">
+        <div class="col-sm-8">
+          <input type="email" id="newsletterEmail" class="form-control" placeholder="Enter your email" required>
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+        </div>
+      </form>
+      <div id="newsletterMsg" class="mt-2"></div>
+    </div>
+  </section>
+
+  <footer class="py-3 text-white bg-dark">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>© <span id="yearDisplay"></span> CineVault</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="data/items.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('yearDisplay').textContent = new Date().getFullYear();
+    // Newsletter - simple demo
+    document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value.trim();
+      const msg = document.getElementById('newsletterMsg');
+      if (!email) return msg.textContent = 'Please enter a valid email.';
+      // store in LocalStorage (optional)
+      const listKey = 'cinevault_newsletter';
+      const arr = JSON.parse(localStorage.getItem(listKey) || '[]');
+      if (!arr.includes(email)) {
+        arr.push(email);
+        localStorage.setItem(listKey, JSON.stringify(arr));
+      }
+      msg.textContent = 'Thanks for subscribing!';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
